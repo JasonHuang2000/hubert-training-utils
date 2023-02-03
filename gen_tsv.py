@@ -49,7 +49,7 @@ def main(
             audio_paths += random.sample(paths, int(len(paths)*data_sample_ratio))
         logging.info("%d audio files have been sampled. (sampling rate = %s)", len(audio_paths), data_sample_ratio)
 
-        logging.info("Writing results to %s...", output_path)
+        logging.info("Writing results to %s...", output_dir)
         f.write(f"{data_root}\n")
         lines = []
         for audio_path in tqdm(audio_paths):
