@@ -81,6 +81,9 @@ if [[ $phase == "1" ]]; then
         echo "K-means labels found in ${result_dir}/phase1_labels, skipping generation process."
     fi
 
+    mv "${result_dir}/phase1_labels/train_0_1.km"  "${result_dir}/phase1_labels/train.km"
+    mv "${result_dir}/phase1_labels/valid_0_1.km"  "${result_dir}/phase1_labels/valid.km"
+
     # Create dummy dict
     for x in $(seq 0 99); do
         echo "$x 1"
@@ -110,6 +113,9 @@ elif [[ $phase == "2" ]]; then
     else
         echo "K-means labels found in ${result_dir}/phase1_labels, skipping generation process."
     fi
+
+    mv "${result_dir}/phase2_labels/train_0_1.km"  "${result_dir}/phase2_labels/train.km"
+    mv "${result_dir}/phase2_labels/valid_0_1.km"  "${result_dir}/phase2_labels/valid.km"
 
     # Create dummy dict
     for x in $(seq 0 499); do
