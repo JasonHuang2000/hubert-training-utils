@@ -32,6 +32,10 @@ else
     exit 1
 fi
 
+if [[ ! -d "$data_dir" ]]; then
+    mkdir -p "$data_dir"
+fi
+
 # Unpack dataset split
 if [[ ! -d "${data_dir}/LibriSpeech/${data_split_name}" ]]; then
     echo "Unpacking LibriSpeech train-${split}h split..."
@@ -42,9 +46,6 @@ if [[ ! -d "${data_dir}/LibriSpeech/dev-clean" ]]; then
     tar -xf "${root_dir}/dev-clean.tar.gz" --directory ${data_dir}
 fi
 
-if [[ ! -d "$data_dir" ]]; then
-    mkdir -p "$data_dir"
-fi
 if [[ ! -d "$result_dir" ]]; then
     mkdir -p "$result_dir"
 fi
