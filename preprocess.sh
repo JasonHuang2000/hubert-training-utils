@@ -52,7 +52,7 @@ fi
 
 # Generate tsv meta files
 if [[ ! -d "${result_dir}/tsv" ]]; then
-    python3 "${SCRIPT_DIR}/gen_tsv.py" "${data_dir}/LibriSpeech" "${result_dir}/tsv" "$split"
+    python3 "${SCRIPT_DIR}/gen_tsv.py" "${data_dir}/LibriSpeech" "${result_dir}/tsv" "$split" --speaker_sample_ratio=1 --data_sample_ratio=1
 else
     echo "Meta files found in ${result_dir}/tsv, skipping generation process."
 fi
