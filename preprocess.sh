@@ -14,10 +14,10 @@ if [[ $# -ne 5 ]]; then
 fi
 
 SCRIPT_DIR=$(dirname "$0")
-root_dir="$1"
+root_dir=$(realpath "$1")
 split="$2"
-data_dir="$3"
-result_dir="$4"
+data_dir=$(realpath "$3")
+result_dir=$(realpath "$4")
 phase="$5"
 data_split_name=""
 
