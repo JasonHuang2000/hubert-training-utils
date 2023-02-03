@@ -50,17 +50,18 @@ def main(
         logging.info("%d audio files have been sampled. (sampling rate = %s)", len(audio_paths), data_sample_ratio)
 
         logging.info("Writing results to %s...", output_dir)
-        f.write(f"{data_root}\n")
         lines = []
         for audio_path in tqdm(audio_paths):
             wav = get_features_or_waveform(audio_path, need_waveform=True, use_sample_rate=16000)
             lines.append(f"{audio_path}\t{len(wav)}\n")
+        f.write(f"{data_root}\n")
         f.writelines(lines)
 
     with open(os.path.join(output_dir, "valid.tsv"), "w") as f:
         for audio_path in tqdm(glob.glob("dev-clean/**/*.flac", recursive=True)):
             wav = get_features_or_waveform(audio_path, need_waveform=True, use_sample_rate=16000)
             lines.append(f"{audio_path}\t{len(wav)}\n")
+        f.write(f"{data_root}\n")
         f.writelines(lines)
 
 if __name__ == "__main__":
