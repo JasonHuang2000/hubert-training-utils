@@ -50,7 +50,7 @@ optimization:
   max_update: 250000
   lr: [0.0005]
   clip_norm: 10.0
-  update_freq: 4
+  update_freq: [4]
 
 optimizer:
   _name: adam
