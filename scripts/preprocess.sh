@@ -121,5 +121,5 @@ elif [[ $phase == "2" ]]; then
     # Create dummy dict
     for x in $(seq 0 499); do
         echo "$x 1"
-    done > "${result_dir}/phase1_labels/dict.km.txt"
+    done > "${result_dir}/phase2_labels/dict.km.txt"
 fi
