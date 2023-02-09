@@ -78,12 +78,11 @@ if [[ $phase == "1" ]]; then
     if [[ ! -d "${result_dir}/phase1_labels" ]]; then
         python3 "${PROJECT_DIR}/simple_kmeans/dump_km_label.py" "${result_dir}/mfcc" train "${result_dir}/phase1_kmeans.pt" 1 0 "${result_dir}/phase1_labels"
         python3 "${PROJECT_DIR}/simple_kmeans/dump_km_label.py" "${result_dir}/mfcc" valid "${result_dir}/phase1_kmeans.pt" 1 0 "${result_dir}/phase1_labels"
+        mv "${result_dir}/phase1_labels/train_0_1.km"  "${result_dir}/phase1_labels/train.km"
+        mv "${result_dir}/phase1_labels/valid_0_1.km"  "${result_dir}/phase1_labels/valid.km"
     else
         echo "K-means labels found in ${result_dir}/phase1_labels, skipping generation process."
     fi
-
-    mv "${result_dir}/phase1_labels/train_0_1.km"  "${result_dir}/phase1_labels/train.km"
-    mv "${result_dir}/phase1_labels/valid_0_1.km"  "${result_dir}/phase1_labels/valid.km"
 
     # Create dummy dict
     for x in $(seq 0 99); do
@@ -111,12 +110,11 @@ elif [[ $phase == "2" ]]; then
     if [[ ! -d "${result_dir}/phase2_labels" ]]; then
         python3 "${PROJECT_DIR}/simple_kmeans/dump_km_label.py" "${result_dir}/hubert" train "${result_dir}/phase2_kmeans.pt" 1 0 "${result_dir}/phase2_labels"
         python3 "${PROJECT_DIR}/simple_kmeans/dump_km_label.py" "${result_dir}/hubert" valid "${result_dir}/phase2_kmeans.pt" 1 0 "${result_dir}/phase2_labels"
+        mv "${result_dir}/phase2_labels/train_0_1.km"  "${result_dir}/phase2_labels/train.km"
+        mv "${result_dir}/phase2_labels/valid_0_1.km"  "${result_dir}/phase2_labels/valid.km"
     else
         echo "K-means labels found in ${result_dir}/phase1_labels, skipping generation process."
     fi
-
-    mv "${result_dir}/phase2_labels/train_0_1.km"  "${result_dir}/phase2_labels/train.km"
-    mv "${result_dir}/phase2_labels/valid_0_1.km"  "${result_dir}/phase2_labels/valid.km"
 
     # Create dummy dict
     for x in $(seq 0 499); do
