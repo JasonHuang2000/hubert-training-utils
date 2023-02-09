@@ -11,4 +11,4 @@ fairseq-hydra-train \
     task.data=/ntu-jason/preprocessing/tsv \
     task.label_dir=/ntu-jason/preprocessing/phase2_labels \
     task.labels='["km"]' \
-    model.label_rate=500
+    model.label_rate=50
