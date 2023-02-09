@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pip install --upgrade pip
-pip install -r /ntu-jason/hubert-traning-utils/requirements.txt
+pip install -r /ntu-jason/hubert-training-utils/requirements.txt
 
 cd /ntu-jason/exp/
 
