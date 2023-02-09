@@ -113,7 +113,7 @@ elif [[ $phase == "2" ]]; then
         mv "${result_dir}/phase2_labels/train_0_1.km"  "${result_dir}/phase2_labels/train.km"
         mv "${result_dir}/phase2_labels/valid_0_1.km"  "${result_dir}/phase2_labels/valid.km"
     else
-        echo "K-means labels found in ${result_dir}/phase1_labels, skipping generation process."
+        echo "K-means labels found in ${result_dir}/phase2_labels, skipping generation process."
     fi
 
     # Create dummy dict
