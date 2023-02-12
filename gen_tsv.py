@@ -47,9 +47,8 @@ def main(
         for speaker in sampled_speakers:
             paths = glob.glob(f"{speaker}/**/*.flac", recursive=True)
             audio_paths += random.sample(paths, int(len(paths)*data_sample_ratio))
-        logging.info("%d audio files have been sampled. (sampling rate = %s)", len(audio_paths), data_sample_ratio)
-
-        logging.info("Writing results to %s...", output_dir)
+        logging.info("[TRAIN] %d audio files have been sampled. (sampling rate = %s)", len(audio_paths), data_sample_ratio)
+        logging.info("[TRAIN] Writing results to %s...", os.path.join(output_dir, "train.tsv"))
         lines = []
         for audio_path in tqdm(audio_paths):
             wav = get_features_or_waveform(audio_path, need_waveform=True, use_sample_rate=16000)
@@ -58,6 +57,8 @@ def main(
         f.writelines(lines)
 
     with open(os.path.join(output_dir, "valid.tsv"), "w") as f:
+        logging.info("[VALID] Writing results to %s...", os.path.join(output_dir, "valid.tsv"))
+        lines = []
         for audio_path in tqdm(glob.glob("dev-clean/**/*.flac", recursive=True)):
             wav = get_features_or_waveform(audio_path, need_waveform=True, use_sample_rate=16000)
             lines.append(f"{audio_path}\t{len(wav)}\n")
