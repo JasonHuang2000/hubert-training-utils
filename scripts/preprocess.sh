@@ -64,17 +64,17 @@ if [[ ! -d "$result_dir" ]]; then
 fi
 
 # Generate tsv meta files
-if [[ ! -d "${result_dir}/tsv-${split}" ]]; then
-    python3 "${PROJECT_DIR}/gen_tsv.py" "${data_dir}/LibriSpeech" "${result_dir}/tsv-${split}" "$split" --speaker_sample_ratio=1 --data_sample_ratio=1
+if [[ ! -d "${result_dir}/tsv" ]]; then
+    python3 "${PROJECT_DIR}/gen_tsv.py" "${data_dir}/LibriSpeech" "${result_dir}/tsv" "$split" --speaker_sample_ratio=1 --data_sample_ratio=1
 else
-    echo "Meta files found in ${result_dir}/tsv-${split}, skipping generation process."
+    echo "Meta files found in ${result_dir}/tsv, skipping generation process."
 fi
 
 if [[ $phase == "1" ]]; then
     # Generate MFCC features
     if [[ ! -d "${result_dir}/mfcc" ]]; then
-        python3 "${PROJECT_DIR}/simple_kmeans/dump_mfcc_feature.py" "${result_dir}/tsv-${split}" train 1 0 "${result_dir}/mfcc"
-        python3 "${PROJECT_DIR}/simple_kmeans/dump_mfcc_feature.py" "${result_dir}/tsv-${split}" valid 1 0 "${result_dir}/mfcc"
+        python3 "${PROJECT_DIR}/simple_kmeans/dump_mfcc_feature.py" "${result_dir}/tsv" train 1 0 "${result_dir}/mfcc"
+        python3 "${PROJECT_DIR}/simple_kmeans/dump_mfcc_feature.py" "${result_dir}/tsv" valid 1 0 "${result_dir}/mfcc"
     else
         echo "MFCC features found in ${result_dir}/mfcc, skipping generation process."
     fi
@@ -105,8 +105,8 @@ elif [[ $phase == "2" ]]; then
     # Generate HuBERT features
     if [[ ! -d "${result_dir}/hubert" ]]; then
         read -p "Please enter Phase-1 HuBERT training checkpoint path: " ckpt_path
-        python3 "${PROJECT_DIR}/simple_kmeans/dump_hubert_feature.py" "${result_dir}/tsv-${split}" train "$ckpt_path" 0 1 0 "${result_dir}/hubert"
-        python3 "${PROJECT_DIR}/simple_kmeans/dump_hubert_feature.py" "${result_dir}/tsv-${split}" valid "$ckpt_path" 0 1 0 "${result_dir}/hubert"
+        python3 "${PROJECT_DIR}/simple_kmeans/dump_hubert_feature.py" "${result_dir}/tsv" train "$ckpt_path" 0 1 0 "${result_dir}/hubert"
+        python3 "${PROJECT_DIR}/simple_kmeans/dump_hubert_feature.py" "${result_dir}/tsv" valid "$ckpt_path" 0 1 0 "${result_dir}/hubert"
     else
         echo "HuBERT features found in ${result_dir}/hubert, skipping generation process."
     fi
