@@ -24,6 +24,8 @@ phase="$5"
 kmeans_ratio="$6"
 data_split_name=""
 
+pip install --upgrade pip
+pip install -r "${PROJECT_DIR}/requirements.txt"
 
 if [[ ! -d "$data_dir" ]]; then
     mkdir -p "$data_dir"
