@@ -29,11 +29,10 @@ fi
 pip install --upgrade pip
 pip install -r "${utils_dir}/requirements.txt"
 
-cd "$exp_dir"
-
 fairseq-hydra-train \
     --config-dir "${utils_dir}/configs/" \
     --config-name "$config_name" \
+    hydra.run.dir=${exp_dir} \
     task.data=${preprocess_dir}/tsv \
     task.label_dir=${preprocess_dir}/${label_dir} \
     task.labels='["km"]' \
