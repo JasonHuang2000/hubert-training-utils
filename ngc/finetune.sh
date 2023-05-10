@@ -11,6 +11,8 @@ exp_name="${layer}L-${split}h"
 
 source /ntu-jason/.venv/bin/activate
 
+mkdir -p /ntu-jason/exp/finetune/${exp_name}
+
 if [[ -d "/ntu-jason/exp/finetune/${exp_name}" ]]; then
     python3 /ntu-jason/s3prl/s3prl/run_downstream.py \
         -m train \

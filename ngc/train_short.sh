@@ -11,5 +11,7 @@ kmeas_ratio="$3"
 
 source /ntu-jason/.venv/bin/activate
 
+mkdir -p /ntu-jason/exp/phase1-short/${layer}L-${split}h
+
 bash /ntu-jason/hubert-training-utils/scripts/preprocess.sh /LibriSpeech ${split} /ntu-jason/datasets /ntu-jason/preprocessing-${split} 1 ${kmeas_ratio} || exit 1
 bash /ntu-jason/hubert-training-utils/scripts/hubert_tiny.sh "1-short" /ntu-jason/hubert-training-utils /ntu-jason/preprocessing-${split} /ntu-jason/exp/phase1-short/${layer}L-${split}h || exit 1
