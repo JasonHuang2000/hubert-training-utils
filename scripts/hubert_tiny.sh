@@ -2,7 +2,7 @@
 
 if [[ $# -ne 4 ]]; then
     echo "Usage: ./hubert_tiny.sh [phase] [split] [utils_dir] [preprocess_dir] [exp_dir]."
-    echo "  - phase: HuBERT training phase, could be 1 or 2."
+    echo "  - phase: HuBERT training phase, could be 1, 2 or 1-short."
     echo "  - utils_dir: path to hubert-training-utils directory."
     echo "  - preprocess_dir: path to directory of preprocessing results."
     echo "  - exp_dir: path to expriment directory."
@@ -17,6 +17,10 @@ if [[ $phase == "1" ]]; then
     config_name="hubert_tiny_librispeech_p1"
     label_dir="phase1_labels"
     label_rate="100"
+elif [[ $phase == "1-short" ]]; then
+    config_name="hubert_tiny_librispeech_p1_short"
+    label_dir="phase1_labels"
+    label_rate="100"
 elif [[ $phase == "2" ]]; then
     config_name="hubert_tiny_librispeech_p2"
     label_dir="phase2_labels"
@@ -25,9 +29,6 @@ else
     echo "Unsupported training phase ${phase}."
     exit 1
 fi
-
-pip install --upgrade pip
-pip install -r "${utils_dir}/requirements.txt"
 
 fairseq-hydra-train \
     --config-dir "${utils_dir}/configs/" \
