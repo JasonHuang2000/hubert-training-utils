@@ -17,7 +17,8 @@ phase="$1"
 utils_dir=$(realpath "$2")
 preprocess_dir=$(realpath "$3")
 exp_dir=$(realpath "$4")
-fl_dir=$(realpath "$5")
+config_dir=$(realpath "$5")
+fl_dir=$(realpath "$6")
 
 if [[ $phase == "1" ]]; then
     label_dir="phase1_labels"
