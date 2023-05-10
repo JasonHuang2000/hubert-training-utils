@@ -2,3 +2,4 @@ tqdm
 fire
 npy-append-array
 fairseq==0.12.2
+pyyaml
