@@ -18,6 +18,7 @@ def main(
     config["task"]["label_dir"] = f"{preprocess_dir}/{label_dir}"
     config["task"]["labels"] = ["km"]
     config["model"]["label_rate"] = label_rate
+    config["distributed_training"]["distributed_world_size"] = 1
 
     with open(output_file, "w") as f:
         yaml.safe_dump(config, f)
