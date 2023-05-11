@@ -16,7 +16,7 @@ def main(
     config["hydra"]["run"]["dir"] = exp_dir
     config["task"]["data"] = f"{preprocess_dir}/tsv"
     config["task"]["label_dir"] = f"{preprocess_dir}/{label_dir}"
-    config["task"]["labels"] = '["km"]'
+    config["task"]["labels"] = ["km"]
     config["model"]["label_rate"] = label_rate
 
     with open(output_file, "w") as f:
