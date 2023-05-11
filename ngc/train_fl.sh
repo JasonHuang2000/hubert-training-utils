@@ -16,4 +16,4 @@ source /ntu-jason/.venv/bin/activate
 mkdir -p /ntu-jason/exp/${phase}/FL
 
 bash /ntu-jason/hubert-training-utils/scripts/preprocess.sh /LibriSpeech ${split} /ntu-jason/datasets /ntu-jason/preprocessing-${split} 1 ${kmeas_ratio} || exit 1
-bash /ntu-jason/hubert-training-utils/scripts/hubert_tiny_fl.sh "$phase" /ntu-jason/hubert-training-utils /ntu-jason/preprocessing-${split} /ntu-jason/exp/${phase}/FL /ntu-jason /ntu-jason/ssl-hubert/flute || exit 1
+bash /ntu-jason/hubert-training-utils/scripts/hubert_tiny_fl.sh "$phase" /ntu-jason/hubert-training-utils /ntu-jason/preprocessing-${split} /ntu-jason/exp/phase${phase}/FL /ntu-jason /ntu-jason/ssl-hubert/flute || exit 1
