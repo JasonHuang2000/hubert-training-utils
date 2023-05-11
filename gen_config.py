@@ -19,6 +19,7 @@ def main(
     config["task"]["labels"] = ["km"]
     config["model"]["label_rate"] = label_rate
     config["distributed_training"]["distributed_world_size"] = 1
+    config["common"]["fp16"] = False
 
     with open(output_file, "w") as f:
         yaml.safe_dump(config, f)
