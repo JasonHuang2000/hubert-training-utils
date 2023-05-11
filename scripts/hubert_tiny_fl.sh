@@ -41,7 +41,7 @@ fi
 # generate experiment configuration
 mkdir -p "$exp_dir" "$config_dir"
 python3 "${PROJECT_DIR}/gen_config.py" "$exp_dir" "$preprocess_dir" "$label_dir" "$label_rate" "$source_file" "${config_dir}/fairseq_config.yaml"
-cp "${config_dir}/fairseq_config.yaml" "${fl_dir}/../fairseq/configs/config.yaml"
+cp "${config_dir}/fairseq_config.yaml" "${fl_dir}/../fairseq/config/config.yaml"
 
 # run FL
 cd $fl_dir
