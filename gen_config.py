@@ -20,7 +20,10 @@ def main(
     config["model"]["label_rate"] = label_rate
     config["distributed_training"]["distributed_world_size"] = 1
     config["common"]["fp16"] = False
-    config["optimizer"] = {"_name": "sgd"}
+    config["optimizer"] = {
+        "_name": "sgd",
+        "lr": "${optimization.lr}",
+    }
 
     with open(output_file, "w") as f:
         yaml.safe_dump(config, f)
