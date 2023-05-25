@@ -23,6 +23,8 @@ def main(
     config["optimizer"] = {
         "_name": "sgd",
         "lr": "${optimization.lr}",
+        "momentum": 0,
+        "weight_decay": 0,
     }
 
     with open(output_file, "w") as f:
