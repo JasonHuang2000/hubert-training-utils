@@ -26,6 +26,7 @@ def main(
         "momentum": 0,
         "weight_decay": 0,
     }
+    config.pop("lr_scheduler")
 
     with open(output_file, "w") as f:
         yaml.safe_dump(config, f)
