@@ -11,6 +11,7 @@ kmeas_ratio="$3"
 
 source /ntu-jason/.venv/bin/activate
 
+git -C /ntu-jason/hubert-training-utils/ pull origin main
 mkdir -p /ntu-jason/exp/phase1-short/${layer}L-${split}h
 
 bash /ntu-jason/hubert-training-utils/scripts/preprocess.sh /LibriSpeech ${split} /ntu-jason/datasets /ntu-jason/preprocessing-${split} 1 ${kmeas_ratio} || exit 1

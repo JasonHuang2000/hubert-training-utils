@@ -9,6 +9,7 @@ split="$1"
 layer="$2"
 kmeas_ratio="$3"
 
+git -C /ntu-jason/hubert-training-utils/ pull origin main
 source /ntu-jason/.venv/bin/activate
 
 mkdir -p /ntu-jason/exp/phase1/${layer}L-${split}h

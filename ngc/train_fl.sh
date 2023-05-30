@@ -11,6 +11,8 @@ layer=2
 kmeas_ratio=0.3
 phase="$1"
 
+git -C /ntu-jason/hubert-training-utils/ pull origin main
+git -C /ntu-jason/ssl-hubert/ pull origin main
 source /ntu-jason/.venv/bin/activate
 
 mkdir -p /ntu-jason/exp/${phase}/FL
