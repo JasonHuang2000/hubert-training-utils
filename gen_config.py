@@ -20,12 +20,6 @@ def main(
     config["model"]["label_rate"] = label_rate
     config["distributed_training"]["distributed_world_size"] = 1
     config["common"]["fp16"] = False
-    config["optimizer"] = {
-        "_name": "sgd",
-        "lr": "${optimization.lr}",
-        "momentum": 0,
-        "weight_decay": 0,
-    }
     config["lr_scheduler"] = {
         "_name": "fixed",
     }
